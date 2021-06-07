@@ -1,17 +1,55 @@
-public class HackerRankIssue01
-{
-	public static void main(String[] args){
-	System.out.println()
-	}
+/*
+ ** You are given an integer , you have to convert it into a string.
+ **Please complete the partially completed code in the editor.
+ **If your code successfully converts  into a string  the code will print "Good job". Otherwise it will print "Wrong answer".
+ ** can range between  -100 to  100 inclusive.
+*/
 
-	Scanner in = new Scanner(System.in);
-	int n = in.nextInt();
-	in.close();
+import java.util.*;
+import java.security.*;
+public class Solution {
+ public static void main(String[] args) {
 
-	String intToString = String.valueOf(n);
+  DoNotTerminate.forbidExit();
 
-	if(n == intToString)
-	System.out.println("Good job");
-	else
-	System.out.printl("wrong answer");
+  try {
+   Scanner in = new Scanner(System.in);
+   int n = in .nextInt();
+   in.close();
+   //String s=???; Complete this line below
+
+   //Major code area for reference
+   String s = String.valueOf(n);
+
+
+   if (n == Integer.parseInt(s)) {
+    System.out.println("Good job");
+   } else {
+    System.out.println("Wrong answer.");
+   }
+  } catch (DoNotTerminate.ExitTrappedException e) {
+   System.out.println("Unsuccessful Termination!!");
+  }
+ }
+}
+
+//The following class will prevent you from terminating the code using exit(0)!
+class DoNotTerminate {
+
+ public static class ExitTrappedException extends SecurityException {
+
+  private static final long serialVersionUID = 1;
+ }
+
+ public static void forbidExit() {
+  final SecurityManager securityManager = new SecurityManager() {
+   @Override
+   public void checkPermission(Permission permission) {
+    if (permission.getName().contains("exitVM")) {
+     throw new ExitTrappedException();
+    }
+   }
+  };
+  System.setSecurityManager(securityManager);
+ }
 }
