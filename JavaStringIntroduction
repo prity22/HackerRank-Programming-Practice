@@ -1,0 +1,53 @@
+/*
+ ** The elements of a String are called characters. The number of characters in a String is called the length, and it can be retrieved with the String.length() method.
+ ** Given two strings of lowercase English letters,  and , perform the following operations:
+ ** Sum the lengths of A and B.
+ ** Determine if A is lexicographically larger than B (i.e.: does  come before  in the dictionary?).
+ ** Capitalize the first letter in A and B and print them on a single line, separated by a space.
+*/
+import java.io.*;
+import java.util.*;
+
+public class Solution
+{
+
+    public static void main (String[] args)
+    {
+
+        Scanner sc = new Scanner(System.in);
+        String A = sc.next();
+        String B = sc.next();
+        
+        //Major code area for reference
+        System.out.println(A.length() + B.length());
+        boolean flag = false;
+        for (int i = 0; i < A.length(); i++) {
+            if ((Character.getNumericValue(A.charAt(i))) > (Character.getNumericValue(
+                B.charAt(i))))
+            {
+                flag = true;
+                break;
+            }
+            else if ((Character.getNumericValue(
+                A.charAt(i))) < (Character.getNumericValue(B.charAt(i))))
+            {
+                flag = false;
+                break;
+            }
+            else {
+                continue;
+            }
+        }
+
+        if (flag) {
+            System.out.println("Yes");
+        }
+        else
+            System.out.println("No");
+
+        A = A.replace(A.charAt(0), Character.toUpperCase(A.charAt(0)));
+        B = B.replace(B.charAt(0), Character.toUpperCase(B.charAt(0)));
+        System.out.println(A + " " + B);
+
+    }
+}
